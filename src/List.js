@@ -1,11 +1,15 @@
 import React from "react";
 import "./List.scss";
 
-const List = () => {
+const List = ({ text, handleUpdate, handleDelete }) => {
   return (
-    <div className="List">
-      <div className="todo">1. 공부하기</div>
-      <button className="delete">삭제</button>
+    <div className="list">
+      <div className="todo">{text}</div>
+      <div className="buttons">
+        <button className="delete" onClick={handleDelete}>
+          삭제
+        </button>
+      </div>
     </div>
   );
 };
