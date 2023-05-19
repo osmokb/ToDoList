@@ -12,12 +12,17 @@ const Main = () => {
   };
 
   const handleButton = () => {
-    list.push(text);
+    setList([...list, text]); //이전 list에 text를 추가
     setText("");
   };
 
-  const handleDelete = () => {
-    console.log("delete");
+  const handleDelete = (index) => {
+    setList(
+      list.filter((text) => {
+        //이 부분은 조건
+        return list.indexOf(text) !== index;
+      })
+    );
   };
 
   return (
@@ -38,9 +43,11 @@ const Main = () => {
             입력
           </button>
         </div>
-        {/* list 배열에 모든 요소에 적용 */}
-        {list.map((contents) => {
-          return <List text={contents} handleDelete={handleDelete} />;
+        {/* list 배열에 모든 요소에 접근해서 새로운 배열을 반환한다 */}
+        {list.map((contents, index) => {
+          return (
+            <List text={contents} index={index} handleDelete={handleDelete} />
+          );
         })}
       </div>
     </div>
