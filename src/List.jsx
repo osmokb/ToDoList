@@ -1,16 +1,37 @@
 import React from "react";
-import "./List.scss";
+import styled from "styled-components";
+
+const ListContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gainsboro;
+  margin-top: 8px;
+`;
+
+const TodoText = styled.div`
+  margin-top: 8px;
+  padding: 0 0 8px 28px;
+`;
+
+const DeleteButton = styled.button`
+  background-color: white;
+  border: none;
+  color: red;
+  margin-right: 12px;
+  cursor: pointer;
+`;
 
 const List = ({ text, handleUpdate, index, handleDelete }) => {
   return (
-    <div className="list">
-      <div className="todo">{text}</div>
+    <ListContainer>
+      <TodoText>{text}</TodoText>
       <div className="buttons">
-        <button className="delete" onClick={() => handleDelete(index)}>
+        <DeleteButton onClick={() => handleDelete(index)}>
           삭제
-        </button>
+        </DeleteButton>
       </div>
-    </div>
+    </ListContainer>
   );
 };
 
